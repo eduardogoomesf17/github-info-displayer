@@ -1,5 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as colors from '../config/colors';
 
 export default createGlobalStyle`
@@ -38,6 +40,11 @@ export default createGlobalStyle`
   hr {
     border: 1px solid ${colors.BORDER_COLOR};
     width: 90%;
+    margin-bottom: 10px;
+  }
+
+  div.userInfo {
+    margin: 20px auto;
   }
 `;
 

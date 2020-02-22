@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { get } from 'loadsh';
+import { get } from 'loadsh';
 import { toast, ToastContainer } from 'react-toastify';
 
 import GlobalStyles, { Container } from './styles/GlobalStyles';
 import Form from './components/Form';
-// import UserInfo from './components/UserInfo';
-// import UserRepos from './components/UserRepos';
+import UserInfo from './components/UserInfo';
+import UserRepos from './components/UserRepos';
 
 function App() {
   const [githubUserInfo, setGithubUserInfo] = useState({});
   const [githubUserRepos, setGithubUserRepos] = useState([]);
-
-  useEffect(() => {
-    console.log(githubUserInfo);
-  }, [githubUserInfo]);
-
-  useEffect(() => {
-    console.log(githubUserRepos);
-  }, [githubUserRepos]);
 
   async function handleUserSearch(username) {
     try {
@@ -34,9 +26,9 @@ function App() {
 
       setGithubUserRepos([...repos]);
 
-      toast.success('There you are');
+      toast.success('There you go =)');
     } catch (e) {
-      toast.error('User or repositories not found');
+      toast.error('User or repositories not found =(');
     }
   }
 
@@ -47,27 +39,18 @@ function App() {
       <Form onSubmit={handleUserSearch} />
       <hr />
 
-      <div>
-        <h1>asdasdsa</h1>
-        <h1>asdasdsa</h1>
-        <h1>asdasdsa</h1>
-        <h1>asdasdsa</h1>
-        <h1>asdasdsa</h1>
-        <h1>asdasdsa</h1>
+      <div className="userInfo">
+        {get(githubUserInfo, 'login', false) ? <UserInfo githubUserInfo={githubUserInfo} /> : <p />}
       </div>
 
-      {/* <div className="userInfo">
-        {get(githubUserInfo, 'login', false) ? <UserInfo githubUserInfo={githubUserInfo} /> : <p />}
-      </div> */}
-
       <hr />
-      {/*
+
       <div className="userRepos">
         {githubUserRepos.map((githubUserRepo) => <UserRepos id={githubUserRepos.repoName} githubUserRepo={githubUserRepo} />)}
-      </div>  */}
+      </div>
 
       <GlobalStyles />
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={4000} />
     </Container>
   );
 }
