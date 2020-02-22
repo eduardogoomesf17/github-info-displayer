@@ -35,6 +35,7 @@ export default createGlobalStyle`
 
   a {
     text-decoration: none;
+    cursor: pointer;
   }
 
   hr {
@@ -46,6 +47,14 @@ export default createGlobalStyle`
   div.userInfo {
     margin: 20px auto;
   }
+
+  div.userRepos {
+    margin: 20px 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
 `;
 
 export const Container = styled.div`
